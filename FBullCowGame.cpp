@@ -1,8 +1,7 @@
-#pragma once
+/* This is the class of FBullCowGame that handles many of the game's
+inner-workings. It pulls its information off of the header file of the same
+name.*/
 #include "FBullCowGame.h"
-#include <map>
-#define TMap std::map
-
 
 FBullCowGame::FBullCowGame()
 {

@@ -1,9 +1,13 @@
+/*The header file for the FBullCowGame.cpp. Initializes the functions
+and variables for the game.*/
 #pragma once
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <ctime> 
 #include <algorithm>
+#include <map>
+#define TMap std::map
 
 using FString = std::string;
 using int32 = int;
