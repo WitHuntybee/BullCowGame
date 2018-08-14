@@ -35,6 +35,7 @@ FString FBullCowGame::GetHiddenWord() const { return HiddenWord; }
 int32 FBullCowGame::GetHiddenWordLength() const { return HiddenWord.length(); }
 bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
 
+/*Determines whether a string has any uppercase letters.*/
 bool FBullCowGame::IsLowerCase(FString Word) const
 {
 	for (auto Letter : Word)
@@ -74,12 +75,11 @@ bool FBullCowGame::IsIsogram(FString Word) const
 void FBullCowGame::SetCurrentTry(int32 SetTry) { CurrentTry = SetTry; }
 void FBullCowGame::SetHiddenWord(FString word) { HiddenWord = word; }
 
+/*Pulls a new word from the array WordList in the event of a new game.*/
 void FBullCowGame::GenerateNewWord() 
 { 
-	
 	FString NewWord = WordList[rand() % (49056-0 + 1) + 0];
-	std::cout << NewWord << std::endl;
-	
+	// std::cout << NewWord << std::endl;
 	SetHiddenWord(NewWord); 
 }
 
@@ -91,7 +91,7 @@ void FBullCowGame::Reset()
 	std::cout << "Can you guess the " << GetHiddenWordLength() << " letter isogram I'm thinking of?" << std::endl << std::endl;
 	return;
 }
-
+/*Checks for valid guesses by calling the appropriate functions.*/
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess)
 {
 	if (!IsIsogram(Guess)) // if the guess isn't an isogram
@@ -133,7 +133,8 @@ FBullCowCount FBullCowGame::SubmitValidGuess(FString ValidGuess)
 			}
 		}
 	}
-	// determines whether game is won or not.
+	// determines whether game is won or not
+	// and if is not then increments try.
 	if (BullCowCount.Bulls == GetHiddenWordLength())
 	{ 
 		bGameIsWon = true;
