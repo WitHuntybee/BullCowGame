@@ -2,7 +2,6 @@
 This acts as the view in an MVC pattern, and is responsible for all
 user interaction. For game logic see the FBullCowGame class.
 */
-
 #include <iostream>
 #include <string>
 #include "FBullCowGame.h"
@@ -18,8 +17,6 @@ void PrintGameSummary();
 void PlayGame();
 FText GetValidGuess();
 bool AskToPlayAgain();
-
-
 
 /*What runs during the application.*/
 int main()
