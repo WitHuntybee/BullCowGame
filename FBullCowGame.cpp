@@ -1,6 +1,8 @@
+#pragma once
 #include "FBullCowGame.h"
 #include <map>
 #define TMap std::map
+
 
 FBullCowGame::FBullCowGame()
 {
@@ -9,7 +11,6 @@ FBullCowGame::FBullCowGame()
 	HiddenWord = "planet";
 	std::srand(time(NULL));
 
-	// declares an file for input.
 	std::ifstream InputFile;
 	InputFile.open("isograms.txt");
 
