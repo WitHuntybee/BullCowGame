@@ -1,5 +1,7 @@
-/*The header file for the FBullCowGame.cpp. Initializes the functions
-and variables for the game.*/
+/* The game logic. BullCowGame is a simple game where a player
+has to guess an isogram (a word that only no repeating letters)
+and only has a finite amount of tries.
+*/
 #pragma once
 #include <iostream>
 #include <string>
@@ -7,12 +9,13 @@ and variables for the game.*/
 #include <ctime> 
 #include <algorithm>
 #include <map>
+// to make the syntax Unreal friendly.
 #define TMap std::map
 
+// to make the syntax Unreal friendly.
 using FString = std::string;
 using int32 = int;
 
-/*All values initialized to 0*/
 struct FBullCowCount
 {
 	int32 Bulls = 0;

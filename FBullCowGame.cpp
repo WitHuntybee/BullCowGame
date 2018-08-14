@@ -1,15 +1,19 @@
 /* This is the class of FBullCowGame that handles many of the game's
-inner-workings. It pulls its information off of the header file of the same
-name.*/
+inner-workings. Fills out the functions and variables defined in the header 
+file.
+*/
 #include "FBullCowGame.h"
 
 FBullCowGame::FBullCowGame()
 {
 	MaxTries = 50;
 	CurrentTry = 1;
-	HiddenWord = "planet";
+	// this word must be an isogram. This word is always used first, but subsequent
+	// plays have words randomly pulled from the WordList array.
+	HiddenWord = "planet"; 
 	std::srand(time(NULL));
 
+	// opens up the isograms file to allow pulling of information.
 	std::ifstream InputFile;
 	InputFile.open("isograms.txt");
 
@@ -98,18 +102,19 @@ void FBullCowGame::Reset()
 	std::cout << "Can you guess the " << GetHiddenWordLength() << " letter isogram I'm thinking of?" << std::endl << std::endl;
 	return;
 }
+
 /*Checks for valid guesses by calling the appropriate functions.*/
 EGuessStatus FBullCowGame::CheckGuessValidity(FString Guess)
 {
-	if (!IsIsogram(Guess)) // if the guess isn't an isogram
+	if (!IsIsogram(Guess))
 	{
 		return EGuessStatus::Not_Isogram;
 	}
-	else if (!IsLowerCase(Guess)) // if the guess isn't all lowercase
+	else if (!IsLowerCase(Guess))
 	{
 		return EGuessStatus::Not_Lowercase;
 	}
-	else if (Guess.length() != GetHiddenWordLength()) // if the guess length is wrong
+	else if (Guess.length() != GetHiddenWordLength())
 	{
 		return EGuessStatus::Wrong_Length;
 	}

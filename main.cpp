@@ -7,19 +7,21 @@ user interaction. For game logic see the FBullCowGame class.
 #include <string>
 #include "FBullCowGame.h"
 
+// to make the syntax Unreal friendly.
 using FText = std::string;
 using int32 = int;
 
-FBullCowGame BCGame;
+FBullCowGame BCGame; // instantiates a new game
 bool bStillPlaying;
 
+// function prototypes used here outside of a class.
 void PrintIntro();
 void PrintGameSummary();
 void PlayGame();
 FText GetValidGuess();
 bool AskToPlayAgain();
 
-/*What runs during the application.*/
+
 int main()
 {
 	PrintIntro();
@@ -32,7 +34,8 @@ int main()
 	return 0;
 }
 
-/*Handles the game mechanics, the function that holds the game together.*/
+/*Handles the game mechanics, the function that holds the game together.
+  Plays the game by looping while player still wants to play.*/
 void PlayGame()
 {
 	std::cout << "You have " << BCGame.GetMaxTries() << " attempts" << std::endl;
@@ -54,7 +57,6 @@ void PlayGame()
 	return;
 }
 
-/*prompts the player about playing again*/
 bool AskToPlayAgain()
 {
 	FText Answer = "";
@@ -69,14 +71,13 @@ bool AskToPlayAgain()
 	return ((Answer[0] == 'y') || (Answer[0] == 'Y'));
 }
 
-/*Introduce the game.*/
 void PrintIntro()
 {
 	std::cout << "Welcome to Bulls and Cows, a fun word game." << std::endl;
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength() << " letter isogram I'm thinking of?" << std::endl << std::endl;
 }
 
-/*Prints a simple summary at the end of the game.*/
+
 void PrintGameSummary()
 {
 	if (BCGame.IsGameWon())
@@ -89,7 +90,8 @@ void PrintGameSummary()
 	}
 }
 
-/*Prompts the user to enter a guess and returns that guess.*/
+/*Prompts the user to enter a guess and error checks that guess.
+  Will not continue until a valid guess has been given from the player.*/
 FText GetValidGuess()
 {
 	FText Guess;
