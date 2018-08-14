@@ -4,7 +4,7 @@
 
 FBullCowGame::FBullCowGame()
 {
-	MaxTries = 25;
+	MaxTries = 50;
 	CurrentTry = 1;
 	HiddenWord = "planet";
 	std::srand(time(NULL));
@@ -29,11 +29,18 @@ FBullCowGame::FBullCowGame()
 	std::sort(WordList, WordList+49056);
 }
 
-int32 FBullCowGame::GetMaxTries() const { return MaxTries; }
+
 int32 FBullCowGame::GetCurrentTry() const { return CurrentTry; }
 FString FBullCowGame::GetHiddenWord() const { return HiddenWord; }
 int32 FBullCowGame::GetHiddenWordLength() const { return HiddenWord.length(); }
 bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
+
+int32 FBullCowGame::GetMaxTries() const 
+{ 
+	TMap<int32, int32> WordLengthToMaxTries{ {3, 6}, {4, 8}, {5, 10}, {6, 14}, {7, 17},
+	{8, 20}, {9, 25}, {10, 30} };
+	return WordLengthToMaxTries[GetHiddenWordLength()]; 
+}
 
 /*Determines whether a string has any uppercase letters.*/
 bool FBullCowGame::IsLowerCase(FString Word) const
